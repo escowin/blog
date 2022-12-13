@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  # aside from GET, all other actions are only accessible to authenticated users
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
   # CRUD | retrieve
   def index # get articles
     @articles = Article.all
